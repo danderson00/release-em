@@ -1,0 +1,16 @@
+{
+  "name": "workspace-tools",
+  "version": "0.0.1",
+  "description": "Tools for managing multiple packages in a workspace",
+  "bin": "bin",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^24.7.1",
+    "uuid": "^3.3.2"
+  },
+  "author": "danderson00",
+  "license": "MIT"
+}
