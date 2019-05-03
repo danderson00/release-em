@@ -2,7 +2,7 @@ const factory = require('../src/taskConfigFactory')
 const { resolve } = require('path')
 
 const updatedDependencies = { a: '0.0.1' }
-const plugins = { [`${resolve(__dirname, '../src')}/UpdateDependencyVersions`]: { updatedDependencies } }
+const plugins = { [`${resolve(__dirname, '../src')}/UpdateVersionsPlugin`]: { updatedDependencies } }
 
 test("default release config", () => {
   expect(factory({}, updatedDependencies)({ path: 'path', release: true }))

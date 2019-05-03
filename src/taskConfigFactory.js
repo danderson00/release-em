@@ -14,7 +14,7 @@ const commonConfig = (options, updatedDependencies) => ({
   'non-interactive': true,
   'dry-run': options['dry-run'],
   plugins: {
-    [`${__dirname}/UpdateDependencyVersions`]: { updatedDependencies }
+    [`${__dirname}/UpdateVersionsPlugin`]: { updatedDependencies }
   },
   ...options.commonConfig
 })
