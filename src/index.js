@@ -1,6 +1,4 @@
-const incrementVersions = require('./incrementVersions')
-const { findPackages, matchingVersions } = require('./packages')
-const taskConfigFactory = require('./taskConfigFactory')
+const releasePackages = require('./releasePackages')
 const release = require('release-it')
 
 const defaultOptions = {
@@ -14,10 +12,8 @@ const validateOptions = options => {
   return options
 }
 
-module.exports = options => {
-  const { targetPath, releasePaths } = validateOptions({ ...defaultOptions, ...options })
-  const packages = findPackages(targetPath, releasePaths)
-  const updatedDependencies = incrementVersions(matchingVersions(packages))
-  const configFactory = taskConfigFactory(options, updatedDependencies)
-  const tasks = packages.map(configFactory)
+module.exports = async options => {
+  const originalDirectory = process.cwd()
+  await releasePackages(release, validateOptions({ ...defaultOptions, ...options }))
+  process.chdir(originalDirectory)
 }
