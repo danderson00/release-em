@@ -4,7 +4,7 @@ test("release is called for each package found", async () => {
   const release = jest.fn()
   await releasePackages(release, { 
     targetPath: __dirname + '/packages',
-    releasePaths: ['/app'], 
+    releasePaths: ['app*'], 
     releaseConfig: { release: true }, 
     nonReleaseConfig: { release: false } 
   })

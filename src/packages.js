@@ -1,7 +1,10 @@
 const { readdirSync, readFileSync } = require('fs')
 const { join } = require('path')
 
-const pathMatches = (path, paths) => paths.some(x => path.replace(/\\/g, '/').includes(x.replace(/\\/g, '/')))
+const isReleasePackage = (directoryName, releasePaths) => releasePaths.some(x => 
+  !!(new RegExp(`^${x.replace(/\*/g, '.*')}$`)).exec(directoryName)
+)
+
 const loadPackageJson = packagePath => JSON.parse(readFileSync(join(packagePath, 'package.json')))
 
 module.exports = {
@@ -16,7 +19,7 @@ module.exports = {
         {}
       )
   ),
-  findPackages: (from, matchPaths) => (
+  findPackages: (from, releasePaths) => (
     readdirSync(from, { withFileTypes: true })
       .filter(entry => entry.isDirectory())
       .reduce(
@@ -30,7 +33,7 @@ module.exports = {
                 path: packagePath,
                 name: packageJson.name,
                 version: packageJson.version,
-                release: pathMatches(packagePath, matchPaths)
+                release: isReleasePackage(entry.name, releasePaths)
               }
             ]
           } catch(error) {

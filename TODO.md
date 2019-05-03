@@ -1,2 +1,1 @@
-- support * wildcards for releasePaths instead of just string.includes
 - bin

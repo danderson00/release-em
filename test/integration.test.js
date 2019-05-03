@@ -29,7 +29,7 @@ test("integration test", async () => {
   })
   await release({
     targetPath: __dirname + '/integration',
-    releasePaths: ['/b', '/c'],
+    releasePaths: ['b', 'c'],
     increment: 'patch',
     releaseConfig: { npm: { publish: false }, git: false }
   })
@@ -57,7 +57,7 @@ test("integration test", async () => {
   })
   await release({
     targetPath: __dirname + '/integration',
-    releasePaths: ['/d'],
+    releasePaths: ['d'],
     increment: 'premajor',
     preReleaseId: 'alpha',
     releaseConfig: { npm: { publish: false }, git: false }
