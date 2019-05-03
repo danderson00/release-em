@@ -5,8 +5,10 @@ CLI release tool for multiple packages, built on [`release-it`](https://github.c
 **Release 'em!** automates the tedious tasks of software releases. It does all 
 of the great things that [`release-it`](https://github.com/release-it/release-it) 
 does, like bump versions, tag source repos, changelogs, etc., and also 
-coordinates this across multiple packages. It works especially well when used 
-in conjunction with [yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
+coordinates this across multiple packages. 
+
+It works especially well when used in conjunction with 
+[yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
 It also works equally well with both mono- and multi-repo configurations.
 
 ## Installation
