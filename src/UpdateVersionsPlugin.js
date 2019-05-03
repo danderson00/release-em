@@ -4,7 +4,7 @@ const fs = require('fs')
 
 module.exports = class UpdateVersionsPlugin extends Plugin {
   // if the npm release-it plugin is disabled, the name and versions are not populated
-  // this is a bit of a workaround, but the versions it reports are incorrect (it's not upgrading at all...)
+  // this is a bit of a workaround, but the versions it reports are also incorrect (it's not upgrading at all...)
   getName() {
     return JSON.parse(fs.readFileSync('package.json')).name
   }

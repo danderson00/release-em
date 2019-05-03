@@ -6,9 +6,8 @@ module.exports = (release, options) => {
   const releasePackage = async taskConfig => {
     const originalDirectory = process.cwd()
     process.chdir(taskConfig.path)
-    const result = await release(taskConfig.config)
+    await release(taskConfig.config)
     process.chdir(originalDirectory)
-    return result
   }
   
   const packages = findPackages(options.targetPath, options.releasePaths)
