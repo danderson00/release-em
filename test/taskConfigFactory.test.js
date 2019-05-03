@@ -8,7 +8,13 @@ test("default release config", () => {
   expect(factory({}, updatedDependencies)({ path: 'path', release: true }))
     .toEqual({
       path: 'path',
-      config: { plugins }
+      config: { 
+        plugins,
+        'non-interactive': true,
+        'dry-run': undefined,
+        increment: undefined,
+        preReleaseId: undefined
+      }
   })
 })
 
@@ -17,9 +23,11 @@ test("default non-release config", () => {
     .toEqual({
       path: 'path',
       config: { 
+        plugins,
+        'non-interactive': true,
+        'dry-run': undefined,
         npm: false,
-        git: false,
-        plugins 
+        git: false
       }
     })
 })

@@ -1,4 +1,6 @@
 const releaseConfig = options => ({
+  increment: options.increment,
+  preReleaseId: options.preReleaseId,
   ...options.releaseConfig
 })
 
@@ -9,6 +11,8 @@ const nonReleaseConfig = options => ({
 })
 
 const commonConfig = (options, updatedDependencies) => ({
+  'non-interactive': true,
+  'dry-run': options['dry-run'],
   plugins: {
     [`${__dirname}/UpdateDependencyVersions`]: { updatedDependencies }
   },

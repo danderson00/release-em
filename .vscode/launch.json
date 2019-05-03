@@ -10,7 +10,7 @@
       "name": "Run Tests",
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
       "cwd":"${workspaceFolder}",
-      "args": ["--runInBand", ""],
+      "args": ["--runInBand", "integration"],
       "skipFiles": [
         "<node_internals>/**/*.js"
       ]

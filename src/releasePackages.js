@@ -9,7 +9,7 @@ module.exports = (release, options) => {
   }
   
   const packages = findPackages(options.targetPath, options.releasePaths)
-  const updatedDependencies = incrementVersions(matchingVersions(packages))
+  const updatedDependencies = incrementVersions(matchingVersions(packages), options.increment, options.preReleaseId)
   const configFactory = taskConfigFactory(options, updatedDependencies)
 
   return packages.map(configFactory).reduce(
