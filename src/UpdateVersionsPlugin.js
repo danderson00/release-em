@@ -8,8 +8,10 @@ module.exports = class UpdateVersionsPlugin extends Plugin {
       throw new Error("No dependency information was provided. The UpdateVersionsPlugin plugin is intended to be run using the release-em CLI tool.")
     }
     
-    const packageJson = JSON.parse(fs.readFileSync('package.json')) // cwd is set by release-em
-    const updatedPackageJson = updatePackageVersions(packageJson, this.options.updatedDependencies)
-    fs.writeFileSync('package.json', JSON.stringify(updatedPackageJson, null, 2))
+    if(!this.global.isDryRun) {
+      const packageJson = JSON.parse(fs.readFileSync('package.json')) // cwd is set by release-em
+      const updatedPackageJson = updatePackageVersions(packageJson, this.options.updatedDependencies)
+      fs.writeFileSync('package.json', JSON.stringify(updatedPackageJson, null, 2))
+    }
   }
 }
