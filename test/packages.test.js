@@ -1,4 +1,4 @@
-const { findPackages, matchingVersions } = require('../src/packages')
+const { findPackages, releaseVersions } = require('../src/packages')
 const { join } = require('path')
 
 test("findPackages for a single path", () => {
@@ -18,7 +18,7 @@ test("findPackages for a multiple paths", () => {
 })
 
 test("matching versions for single path", () => {
-  const matches = matchingVersions(findPackages(join(__dirname, 'packages'), ['app*']))  
+  const matches = releaseVersions(findPackages(join(__dirname, 'packages'), ['app*']))  
   expect(matches).toEqual({
     'app': '0.0.1',
     'app.core': '0.0.1'
@@ -26,7 +26,7 @@ test("matching versions for single path", () => {
 })
 
 test("matching versions for multiple paths", () => {
-  const matches = matchingVersions(findPackages(join(__dirname, 'packages'), ['app.*', 'library']))
+  const matches = releaseVersions(findPackages(join(__dirname, 'packages'), ['app.*', 'library']))
   expect(matches).toEqual({
     'app.core': '0.0.1',
     'library': '1.0.0'

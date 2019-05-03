@@ -8,7 +8,7 @@ const isReleasePackage = (directoryName, releasePaths) => releasePaths.some(x =>
 const loadPackageJson = packagePath => JSON.parse(readFileSync(join(packagePath, 'package.json')))
 
 module.exports = {
-  matchingVersions: packages => (
+  releaseVersions: packages => (
     packages
       .filter(p => p.release)
       .reduce(
