@@ -5,9 +5,9 @@ const pathMatches = (path, paths) => paths.some(x => path.replace(/\\/g, '/').in
 const loadPackageJson = packagePath => JSON.parse(readFileSync(join(packagePath, 'package.json')))
 
 module.exports = {
-  matchingVersions: (packages, paths) => (
+  matchingVersions: packages => (
     packages
-      .filter(p => pathMatches(p.path, paths))
+      .filter(p => p.release)
       .reduce(
         (versions, p) => ({
           ...versions,
@@ -16,7 +16,7 @@ module.exports = {
         {}
       )
   ),
-  findPackages: from => (
+  findPackages: (from, matchPaths) => (
     readdirSync(from, { withFileTypes: true })
       .filter(entry => entry.isDirectory())
       .reduce(
@@ -29,7 +29,8 @@ module.exports = {
               {
                 path: packagePath,
                 name: packageJson.name,
-                version: packageJson.version
+                version: packageJson.version,
+                release: pathMatches(packagePath, matchPaths)
               }
             ]
           } catch(error) {

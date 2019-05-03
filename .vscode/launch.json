@@ -7,6 +7,17 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Run Tests",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "cwd":"${workspaceFolder}",
+      "args": ["--runInBand", ""],
+      "skipFiles": [
+        "<node_internals>/**/*.js"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch Program",
       "program": "${workspaceFolder}\\src\\index.js"
     }
