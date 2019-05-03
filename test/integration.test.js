@@ -9,8 +9,8 @@ test("integration test", async () => {
     a: {
       "version": "0.1.0",
       "dependencies": { "d": "1.0.1" },
-      "devDependencies": { "b": "0.0.2" },
-      "peerDependencies": { "b": "0.0.2" }
+      "devDependencies": { "b": "^0.0.2" },
+      "peerDependencies": { "b": "~0.0.2" }
     },
     b: {
       "version": "0.0.2",
@@ -37,8 +37,8 @@ test("integration test", async () => {
     a: {
       "version": "0.1.0",
       "dependencies": { "d": "1.0.1" },
-      "devDependencies": { "b": "0.0.3" },
-      "peerDependencies": { "b": "0.0.3" }
+      "devDependencies": { "b": "^0.0.3" },
+      "peerDependencies": { "b": "~0.0.3" }
     },
     b: {
       "version": "0.0.3",
@@ -66,8 +66,8 @@ test("integration test", async () => {
     a: {
       "version": "0.1.0",
       "dependencies": { "d": "2.0.0-alpha.0" },
-      "devDependencies": { "b": "0.0.3" },
-      "peerDependencies": { "b": "0.0.3" }
+      "devDependencies": { "b": "^0.0.3" },
+      "peerDependencies": { "b": "~0.0.3" }
     },
     b: {
       "version": "0.0.3",

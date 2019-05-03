@@ -1,3 +1,2 @@
-- handle / preserve version prefixes
 - support * wildcards for releasePaths instead of just string.includes
 - bin

@@ -1,9 +1,12 @@
 module.exports = (packageJson, updatedDependencies) => {
+  const versionPrefix = version => (version.match(/([~^])/) || [''])[0]
   const updateDependencyList = dependencyList => dependencyList && (
     Object.keys(dependencyList).reduce(
       (newDependencyList, packageName) => ({
         ...newDependencyList,
-        [packageName]: updatedDependencies[packageName] || dependencyList[packageName]
+        [packageName]: updatedDependencies[packageName]
+          ? (versionPrefix(dependencyList[packageName]) + updatedDependencies[packageName]) 
+          : dependencyList[packageName]
       }),
       {}
     )
@@ -11,9 +14,9 @@ module.exports = (packageJson, updatedDependencies) => {
 
   return {
     ...packageJson,
-    dependencies: updateDependencyList(packageJson.dependencies),
-    devDependencies: updateDependencyList(packageJson.devDependencies),
-    optionalDependencies: updateDependencyList(packageJson.optionalDependencies),
-    peerDependencies: updateDependencyList(packageJson.peerDependencies)
+    ...(packageJson.dependencies && { dependencies: updateDependencyList(packageJson.dependencies) }),
+    ...(packageJson.devDependencies && { devDependencies: updateDependencyList(packageJson.devDependencies) }),
+    ...(packageJson.optionalDependencies && { optionalDependencies: updateDependencyList(packageJson.optionalDependencies) }),
+    ...(packageJson.peerDependencies && { peerDependencies: updateDependencyList(packageJson.peerDependencies) })
   }
 }
