@@ -12,6 +12,7 @@ test("default release config", () => {
         plugins,
         'non-interactive': true,
         'dry-run': undefined,
+        verbose: undefined,
         increment: undefined,
         preReleaseId: undefined
       }
@@ -26,6 +27,7 @@ test("default non-release config", () => {
         plugins,
         'non-interactive': true,
         'dry-run': undefined,
+        verbose: undefined,
         npm: false,
         git: false
       }

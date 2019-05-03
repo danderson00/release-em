@@ -11,8 +11,9 @@ const nonReleaseConfig = options => ({
 })
 
 const commonConfig = (options, updatedDependencies) => ({
-  'non-interactive': true,
+  'non-interactive': !options.interactive,
   'dry-run': options['dry-run'],
+  verbose: options.verbose,
   plugins: {
     [`${__dirname}/UpdateVersionsPlugin`]: { updatedDependencies }
   },

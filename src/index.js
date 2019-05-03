@@ -12,8 +12,4 @@ const validateOptions = options => {
   return options
 }
 
-module.exports = async options => {
-  const originalDirectory = process.cwd()
-  await releasePackages(release, validateOptions({ ...defaultOptions, ...options }))
-  process.chdir(originalDirectory)
-}
+module.exports = async options => releasePackages(release, validateOptions({ ...defaultOptions, ...options }))

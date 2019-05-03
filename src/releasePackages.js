@@ -3,9 +3,12 @@ const { findPackages, matchingVersions } = require('./packages')
 const taskConfigFactory = require('./taskConfigFactory')
 
 module.exports = (release, options) => {
-  const releasePackage = taskConfig => {
+  const releasePackage = async taskConfig => {
+    const originalDirectory = process.cwd()
     process.chdir(taskConfig.path)
-    return release(taskConfig.config)
+    const result = await release(taskConfig.config)
+    process.chdir(originalDirectory)
+    return result
   }
   
   const packages = findPackages(options.targetPath, options.releasePaths)
