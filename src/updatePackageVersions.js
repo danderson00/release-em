@@ -1,10 +1,12 @@
 module.exports = (packageJson, updatedDependencies) => {
-  const updateDependencyList = dependencyList => Object.keys(dependencyList).reduce(
-    (newDependencyList, packageName) => ({
-      ...newDependencyList,
-      [packageName]: updatedDependencies[packageName] || dependencyList[packageName]
-    }),
-    {}
+  const updateDependencyList = dependencyList => dependencyList && (
+    Object.keys(dependencyList).reduce(
+      (newDependencyList, packageName) => ({
+        ...newDependencyList,
+        [packageName]: updatedDependencies[packageName] || dependencyList[packageName]
+      }),
+      {}
+    )
   )
 
   return {

@@ -17,3 +17,14 @@ test("package dependencies are updated", () => {
     peerDependencies: { a: 2, e: 6 }
   })
 })
+
+test("order of properties in package.json is preserved", () => {
+  expect(
+    JSON.stringify(update({
+      devDependencies: { a: 1, c: 3 },
+      name: 'test',
+      dependencies: { a: 1, b: 2 },
+      version: 1
+    }, { a: 2, c: 4, e: 6 }))
+  ).toBe(`{"devDependencies":{"a":2,"c":4},"name":"test","dependencies":{"a":2,"b":2},"version":1}`)
+})
