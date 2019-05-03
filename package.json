@@ -9,7 +9,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "release-it": "^11.0.0"
+    "release-it": "^11.0.0",
+    "semver": "^6.0.0"
   },
   "devDependencies": {
     "jest": "^24.7.1",
