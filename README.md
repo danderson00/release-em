@@ -54,16 +54,16 @@ Options are as follows.
 release-em tools.*
 ```
 
-Release a new patch of packages in directories starting with `tools.`. 
+Release a new patch for packages in directories starting with `tools.`. 
 Any dependant packages in the workspace will have the dependency
 sections of their `package.json` updated accordingly.
 
 ```bash
-release-em tools.* libraries.* -i major
+release-em tools.* libraries.* -i major -t packages
 ```
 
 Release a new major version of packages in directories starting with `tools.` 
-or `libraries.`.
+or `libraries.` in the `packages` directory.
 
 ## Configuration
 
