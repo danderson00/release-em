@@ -83,11 +83,11 @@ Release a new alpha version of packages in directories starting with `tools.`
 or `libraries.` in the `packages` directory.
 
 ```bash
-release-em !+(app) -i minor --validate
+release-em !+(app|admin) -i minor --validate
 ```
 
-Release a new minor version of everything except the `app` package, performing 
-a validation run before any changes are made.
+Release a new minor version of everything except the `app` or `admin` packages, 
+performing a validation run before any changes are made.
 
 ## Configuration
 
