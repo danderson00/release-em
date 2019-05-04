@@ -14,6 +14,8 @@ const aliases = {
   I: 'interactive',
   n: 'noCommit',
   'no-commit': 'noCommit',
+  p: 'preReleaseId',
+  'prerelease-id': 'preReleaseId',
   t: 'targetPath',
   'target-path': 'targetPath',
   v: 'version',
@@ -44,17 +46,18 @@ function help() {
   directory names. Directories should be immediate children of the workspace
   root.
   
-  -c --config        Specify the configuration file path
-  -d --dry-run       Do not touch or write anything, but show the commands
-  -h --help          Print this help
-  -i --increment     Increment "major", "minor", "patch", or "pre*" version; 
-                     or specify version [default: "patch"]
-  -I --interactive   Prompt each change
-  -n --no-commit     Don't create a git commit or tag for released packages
-  -t --target-path   Specify the path of the workspace to release
-     --validate      Perform a quiet dry run first for validation
-  -v --version       Print version number
-  -V --verbose       Verbose output`)
+  -c --config          Specify the configuration file path
+  -d --dry-run         Do not touch or write anything, but show the commands
+  -h --help            Print this help
+  -i --increment       Increment "major", "minor", "patch", or "pre*" version; 
+                       or specify version [default: "patch"]
+  -I --interactive     Prompt each change
+  -n --no-commit       Don't create a git commit or tag for released packages
+  -p --prerelease-id   Tag to use for prerelease versions
+  -t --target-path     Specify the path of the workspace to release
+     --validate        Perform a quiet dry run first for validation
+  -v --version         Print version number
+  -V --verbose         Verbose output`)
 }
 
 function version() {

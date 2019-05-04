@@ -39,16 +39,17 @@ Options are as follows.
 
 | | | |
 -|-|-
--c|--config|Specify the configuration file path
--d|--dry-run|Do not touch or write anything, but show the commands
--h|--help|Print these options
--i|--increment|Increment "major", "minor", "patch", or "pre*" version; or specify version [default: "patch"]
--I|--interactive|Prompt each change
--n|--no-commit|Don't create a git commit or tag for released packages
--t|--target-path|Specify the path of the workspace to release
-| |--validate|Perform a quiet dry run first for validation
--v|--version|Print version number
--V|--verbose|Verbose output
+-c|--config       |Specify the configuration file path
+-d|--dry-run      |Do not touch or write anything, but show the commands
+-h|--help         |Print these options
+-i|--increment    |Increment "major", "minor", "patch", or "pre*" version; or specify version [default: "patch"]
+-I|--interactive  |Prompt each change
+-n|--no-commit    |Don't create a git commit or tag for released packages
+-p|--prerelease-id|Tag to use for prerelease versions
+-t|--target-path  |Specify the path of the workspace to release
+| |--validate     |Perform a quiet dry run first for validation
+-v|--version      |Print version number
+-V|--verbose      |Verbose output
 
 **Release 'em!** will terminate on the first error encountered.
 
