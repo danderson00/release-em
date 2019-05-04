@@ -142,7 +142,7 @@ for details on configuring **Release It!**.
 ### Examples
 
 By default, **Release 'em!** won't create git commits for packages not being
-published. To create a commit for these packages as well, using the workspace
+published. To create a commit for these packages as well using the workspace
 root `package.json` file:
 
 ```JSON
