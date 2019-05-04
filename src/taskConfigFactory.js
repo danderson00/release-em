@@ -1,6 +1,7 @@
 const releaseConfig = options => ({
   increment: options.increment,
   preReleaseId: options.preReleaseId,
+  ...(options.noCommit && { git: false }),
   ...options.releaseConfig
 })
 

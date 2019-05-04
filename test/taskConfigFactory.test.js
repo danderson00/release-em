@@ -57,3 +57,8 @@ test("adding common config", () => {
   expect(factory({ commonConfig }, updatedDependencies)({ release: false }))
     .toMatchObject({ config: commonConfig })
 })
+
+test("noCommit", () => {
+  expect(factory({ noCommit: true }, updatedDependencies)({ release: true }))
+    .toMatchObject({ config: { git: false } })
+})

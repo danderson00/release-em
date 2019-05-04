@@ -12,6 +12,8 @@ const aliases = {
   h: 'help',
   i: 'increment',
   I: 'interactive',
+  n: 'noCommit',
+  'no-commit': 'noCommit',
   t: 'targetPath',
   'target-path': 'targetPath',
   v: 'version',
@@ -20,7 +22,7 @@ const aliases = {
 
 const args = [].slice.call(process.argv, 2)
 const options = parseArgs(args, {
-  boolean: ['dryRun', 'help', 'interactive', 'verbose', 'version'],
+  boolean: ['dryRun', 'help', 'interactive', 'noCommit', 'verbose', 'version'],
   alias: aliases
 })
 
@@ -48,6 +50,7 @@ function help() {
   -i --increment     Increment "major", "minor", "patch", or "pre*" version; 
                      or specify version [default: "patch"]
   -I --interactive   Prompt each change
+  -n --no-commit     Don't create a git commit or tag for released packages
   -t --target-path   Specify the path of the workspace to release
   -v --version       Print version number
   -V --verbose       Verbose output`)

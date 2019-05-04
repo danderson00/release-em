@@ -42,11 +42,18 @@ Options are as follows.
 -h|--help|Print these options
 -i|--increment|Increment "major", "minor", "patch", or "pre*" version; or specify version [default: "patch"]
 -I|--interactive|Prompt each change
+-n|--no-commit|Don't create a git commit or tag for released packages
 -t|--target-path|Specify the path of the workspace to release
 -v|--version|Print version number
 -V|--verbose|Verbose output
 
 **Release 'em!** will terminate on the first error encountered.
+
+### Using With Mono-Repo Configurations
+
+By default, **Release 'em!** will create a git commit in each package 
+directory. For mono-repo configurations, this would create multiple commits
+in the same repo. Use the `--no-commit` option to prevent this from happening.
 
 ### Examples
 
@@ -111,6 +118,7 @@ configPath|'release-em'|Specify the configuration file path
 dryRun|false|Do not touch or write anything, but show the commands
 increment|'patch'|Increment "major", "minor", "patch", or "pre*" version; or specify version
 interactive|false|Prompt each change
+noCommit|false|Don't create a git commit or tag for released packages
 nonReleaseConfig||**Release It!** specific options for packages not being released
 preReleaseId||Prerelease tag name, e.g. "alpha"
 releaseConfig||**Release It!** specific options for packages being released
@@ -130,25 +138,8 @@ for details on configuring **Release It!**.
 ### Examples
 
 By default, **Release 'em!** won't create git commits for packages not being
-published. To create a commit for these packages as well, using a JSON file:
-
-```JSON
-{
-  "nonReleaseConfig": {
-    "git": {
-      "commit": true,
-      "commitMessage": "Update dependencies",
-      "tag": false,
-      "push": true    
-    }
-  }
-}
-```
-
-By default, **Release 'em!** will create a git commit in each package 
-directory. For mono-repo configurations, this would create multiple commits
-in the same repo. To stop this from happening using the workspace root
-`package.json` file:
+published. To create a commit for these packages as well, using the workspace
+root `package.json` file:
 
 ```JSON
 {
@@ -158,14 +149,20 @@ in the same repo. To stop this from happening using the workspace root
     "tools.*"
   ],
   "release-em": {
-    "releaseConfig": {
-      "git": false
+    "nonReleaseConfig": {
+      "git": {
+        "commit": true,
+        "commitMessage": "Update dependencies",
+        "tag": false,
+        "push": true    
+      }
     }
   }
 }
 ```
 
-To customise the commit message for released packages using a Javascript file:
+To customise the commit message for released packages using a Javascript 
+configuration file:
 
 ```Javascript
 module.exports = {
