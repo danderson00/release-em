@@ -1,6 +1,6 @@
 {
   "name": "release-em",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "CLI release tool for multiple packages, built on Release It!",
   "bin": "bin",
   "main": "src/index.js",
