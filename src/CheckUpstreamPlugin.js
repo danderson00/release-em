@@ -6,10 +6,12 @@ module.exports = class CheckUpstreamPlugin extends Plugin {
   async beforeBump() {
     if(!!this.config.options.git) {
       await this.exec('git remote update', readOnlyOperation)
-      const remote = await this.exec('git remote show', readOnlyOperation)
+
+      const branch = await this.exec('git rev-parse --abbrev-ref HEAD', readOnlyOperation)
+      const remoteBranch = await this.exec('git rev-parse --abbrev-ref --symbolic-full-name @{u}', readOnlyOperation)
 
       const upstreamCommits = Number(await this.exec(
-        `git rev-list HEAD..${remote}/HEAD --count`, 
+        `git rev-list ${branch}..${remoteBranch} --count`, 
         readOnlyOperation
       ))
 
