@@ -30,6 +30,7 @@ if (options.version) {
   help()
 } else {
   release({ ...options, releasePaths: options._ })
+    .catch(error => console.error("An error occurred executing Release 'em!", error))
 }
 
 function help() {
@@ -37,16 +38,19 @@ function help() {
 
   Usage: release-em <pathToRelease> [pathToRelease] [...] [options]
 
-  Multiple paths can be specified. '*' can be used as a wildcard in paths.
-
-  -c --config            Specify the configuration file path
-  -d --dry-run           Do not touch or write anything, but show the commands
-  -h --help              Print this help
-  -i --increment         Increment "major", "minor", "patch", or "pre*" version; or specify version [default: "patch"]
-  -I --interactive       Prompt each change
-  -t --target-path       Specify the path of the workspace to release
-  -v --version           Print version number
-  -V --verbose           Verbose output`)
+  Multiple directories can be specified. '*' can be used as a wildcard in 
+  directory names. Directories should be immediate children of the workspace
+  root.
+  
+  -c --config        Specify the configuration file path
+  -d --dry-run       Do not touch or write anything, but show the commands
+  -h --help          Print this help
+  -i --increment     Increment "major", "minor", "patch", or "pre*" version; 
+                     or specify version [default: "patch"]
+  -I --interactive   Prompt each change
+  -t --target-path   Specify the path of the workspace to release
+  -v --version       Print version number
+  -V --verbose       Verbose output`)
 }
 
 function version() {

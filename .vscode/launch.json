@@ -4,6 +4,14 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch Program",
+      "program": "${workspaceFolder}",
+      "args": ["xsocket*", "-t", "..\\xest\\", "-d"],
+      "cwd":"${workspaceFolder}",
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Run Tests",
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
       "cwd":"${workspaceFolder}",

@@ -14,6 +14,8 @@ module.exports = (release, options) => {
   const updatedDependencies = incrementVersions(releaseVersions(packages), options.increment, options.preReleaseId)
   const configFactory = taskConfigFactory(options, updatedDependencies)
 
+  console.log(`Release 'em! found ${packages.length} packages (${packages.filter(x => x.release).length} for release)`)
+
   return packages.map(configFactory).reduce(
     (promise, taskConfig) => promise.then(
       async results => [...results, await releasePackage(taskConfig)]

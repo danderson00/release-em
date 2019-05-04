@@ -23,10 +23,17 @@ yarn add --global release-em
 ## Usage
 
 ```bash
-release-em <pathToRelease> [pathToRelease] [...] [options]
+release-em <releaseDirectory> [releaseDirectory] [...] [options]
 ```
 
-Multiple paths can be specified. '*' can be used as a wildcard in paths. Options are as follows.
+Multiple directories can be specified. '*' can be used as a wildcard in 
+directory names. Directories should be immediate children of the workspace
+root.
+
+Use the `--verbose` option to see what local dependencies are affected in each
+package.
+
+Options are as follows.
 
 | | | |
 -|-|-
