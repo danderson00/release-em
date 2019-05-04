@@ -3,9 +3,9 @@
 CLI release tool for multiple packages, built on [**Release It!**](https://github.com/release-it/release-it).
 
 **Release 'em!** automates the tedious tasks of software releases. It does all 
-of the great things that [**Release It!**](https://github.com/release-it/release-it) 
-does, like bump versions, tag source repos, changelogs, etc., and also 
-coordinates this across multiple packages. 
+of the great things that **Release It!** does, like bump versions, tag source 
+repos, changelogs, etc., and also coordinates this across multiple packages,
+keeping local dependency versions in sync across your packages. 
 
 It works especially well when used in conjunction with 
 [yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
@@ -14,7 +14,7 @@ It also works equally well with both mono- and multi-repo configurations.
 ## Installation
 
 It is recommended that **Release 'em!** is either installed globally or used
-programmatically (see below).
+programmatically (see [below](#using-release-em-programmatically)).
 
 ```bash
 yarn add --global release-em
@@ -28,7 +28,7 @@ release-em <pathToRelease> [pathToRelease] [...] [options]
 
 Multiple paths can be specified. '*' can be used as a wildcard in paths. Options are as follows.
 
-||||
+| | | |
 -|-|-
 -c|--config|Specify the configuration file path
 -d|--dry-run|Do not touch or write anything, but show the commands
@@ -60,10 +60,9 @@ or `libraries.`.
 
 ## Configuration
 
-**Release 'em!** uses the default [**Release It!**](https://github.com/release-it/release-it)
-configuration for packages being released (bump version, publish, tag, changelog), 
-as well as updating local dependency versions for packages in the workspace not 
-being released.
+**Release 'em!** uses the default **Release It!** configuration for packages 
+being released (bump version, publish, tag, changelog), as well as updating 
+local dependency versions for packages in the workspace not being released.
 
 Additional configuration can be specified by either adding a `release-em` 
 section to the workspace root `package.json` file: 
