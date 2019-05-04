@@ -59,7 +59,6 @@ test("integration test", async () => {
     targetPath: __dirname + '/integration',
     releasePaths: ['d'],
     increment: 'premajor',
-    preReleaseId: 'alpha',
     releaseConfig: { npm: { publish: false }, git: false }
   })
   verifyPackages({
@@ -89,6 +88,10 @@ test("integration test", async () => {
 const createPackages = packages => {
   rimraf.sync(`${__dirname}/integration`)
   mkdirSync(`${__dirname}/integration`)
+  writeFileSync(
+    `${__dirname}/integration/package.json`, 
+    JSON.stringify({ "release-em": { preReleaseId: 'alpha' } })
+  )
   Object.keys(packages).forEach(name => {
     mkdirSync(`${__dirname}/integration/${name}`)
     writeFileSync(

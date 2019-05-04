@@ -5,6 +5,8 @@ const parseArgs = require('yargs-parser')
 const release = require('..')
 
 const aliases = {
+  c: 'configPath',
+  config: 'configPath',
   d: 'dry-run',
   h: 'help',
   i: 'increment',
@@ -36,6 +38,7 @@ function help() {
 
   Multiple paths can be specified. '*' can be used as a wildcard in paths.
 
+  -c --config            Specify the configuration file path
   -d --dry-run           Do not touch or write anything, but show the commands
   -h --help              Print this help
   -i --increment         Increment "major", "minor", "patch", or "pre*" version; or specify version [default: "patch"]

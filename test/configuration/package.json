@@ -1,0 +1,9 @@
+{
+  "name": "test",
+  "release-em": {
+    "common": "1",
+    "manifest": {
+      "option": "value"
+    }
+  }
+}

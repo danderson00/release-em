@@ -30,6 +30,7 @@ Multiple paths can be specified. '*' can be used as a wildcard in paths. Options
 
 ||||
 -|-|-
+-c|--config|Specify the configuration file path
 -d|--dry-run|Do not touch or write anything, but show the commands
 -h|--help|Print these options
 -i|--increment|Increment "major", "minor", "patch", or "pre*" version; or specify version [default: "patch"]
