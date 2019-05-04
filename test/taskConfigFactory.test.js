@@ -8,6 +8,7 @@ test("default release config", () => {
   expect(factory({}, updatedDependencies)({ path: 'path', release: true }))
     .toEqual({
       path: 'path',
+      release: true,
       config: { 
         plugins,
         'non-interactive': true,
@@ -23,6 +24,7 @@ test("default non-release config", () => {
   expect(factory({}, updatedDependencies)({ path: 'path', release: false }))
     .toEqual({
       path: 'path',
+      release: false,
       config: { 
         plugins,
         'non-interactive': true,

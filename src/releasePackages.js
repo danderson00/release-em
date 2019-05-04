@@ -12,9 +12,6 @@ module.exports = (release, options) => {
       .finally(() => process.chdir(originalDirectory))
   }
 
-  const packages = findPackages(options.targetPath, options.releasePaths)
-  const updatedDependencies = incrementVersions(releaseVersions(packages), options.increment, options.preReleaseId)
-
   const releaseAllPackages = (packages, options, updatedDependencies, getLogMessage, quiet) => {
     const configFactory = taskConfigFactory(options, updatedDependencies)
     return packages.map(configFactory).reduce(
@@ -25,6 +22,9 @@ module.exports = (release, options) => {
     )
   }
   
+  const packages = findPackages(options.targetPath, options.releasePaths)
+  const updatedDependencies = incrementVersions(releaseVersions(packages), options.increment, options.preReleaseId)
+
   console.log(`Release 'em! found ${packages.length} packages (${packages.filter(x => x.release).length} for release)`)
 
   if(options.validate) {
