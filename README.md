@@ -74,11 +74,12 @@ Any dependant packages in the workspace will have the dependency
 sections of their `package.json` updated accordingly.
 
 ```bash
-release-em tools.* libraries.* -i major -t packages
+release-em tools.* libraries.* -i major -t packages --validate
 ```
 
 Release a new major version of packages in directories starting with `tools.` 
-or `libraries.` in the `packages` directory.
+or `libraries.` in the `packages` directory, performing a validation run before
+any changes are made.
 
 ## Configuration
 
