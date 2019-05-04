@@ -24,6 +24,7 @@ const commonConfig = (options, updatedDependencies) => ({
 module.exports = (options, updatedDependencies) => {
   return definition => ({
     path: definition.path,
+    release: definition.release,
     config: {
       ...(definition.release ? releaseConfig : nonReleaseConfig)(options),
       ...commonConfig(options, updatedDependencies)

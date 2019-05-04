@@ -22,7 +22,7 @@ const aliases = {
 
 const args = [].slice.call(process.argv, 2)
 const options = parseArgs(args, {
-  boolean: ['dryRun', 'help', 'interactive', 'noCommit', 'verbose', 'version'],
+  boolean: ['dryRun', 'help', 'interactive', 'noCommit', 'validate', 'verbose', 'version'],
   alias: aliases
 })
 
@@ -32,7 +32,7 @@ if (options.version) {
   help()
 } else {
   release({ ...options, releasePaths: options._ })
-    .catch(error => console.error("An error occurred executing Release 'em!", error))
+    .catch(error => {/* errors are already logged to console - just suppress unhandled exceptions in the CLI */})
 }
 
 function help() {
@@ -52,6 +52,7 @@ function help() {
   -I --interactive   Prompt each change
   -n --no-commit     Don't create a git commit or tag for released packages
   -t --target-path   Specify the path of the workspace to release
+     --validate      Perform a dry run first for validation
   -v --version       Print version number
   -V --verbose       Verbose output`)
 }
