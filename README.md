@@ -1,6 +1,6 @@
 # Release 'em!
 
-CLI release tool for multiple packages, built on [**Release It!**](https://github.com/release-it/release-it).
+CLI release tool for multiple packages, built on [**Release It!**](https://github.com/release-it/release-it)
 
 **Release 'em!** automates the tedious tasks of software releases. It does all 
 of the great things that **Release It!** does, like bump versions, tag source 
@@ -154,12 +154,12 @@ module.exports = {
 
 **Release 'em!** has a very simple API, exposing a single function expecting
 an object with configuration data, as described above. The function returns a
-promise that will fullfil with an array of the results for each call to
-**Release It!** or rejects with the reason for failure.
+promise that will resolve with an array of the results for each call to
+**Release It!** or reject with the reason for failure.
 
 ```Javascript
 const release = require('release-em')
-const results = release({
+const results = await release({
   preReleaseId: 'beta',
   increment: 'premajor'
 })

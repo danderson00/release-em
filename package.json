@@ -1,8 +1,7 @@
 {
   "name": "release-em",
-  "private": true,
-  "version": "0.0.0",
-  "description": "Execute release-it on multiple packages",
+  "version": "0.0.1",
+  "description": "CLI release tool for multiple packages, built on Release It!",
   "bin": "bin",
   "main": "src/index.js",
   "scripts": {
