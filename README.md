@@ -147,12 +147,20 @@ published. To create a commit for these packages as well, using a JSON file:
 
 By default, **Release 'em!** will create a git commit in each package 
 directory. For mono-repo configurations, this would create multiple commits
-in the same repo. To stop this from happening:
+in the same repo. To stop this from happening using the workspace root
+`package.json` file:
 
 ```JSON
 {
-  "releaseConfig": {
-    "git": false
+  "private": true,
+  "workspaces": [
+    "app",
+    "tools.*"
+  ],
+  "release-em": {
+    "releaseConfig": {
+      "git": false
+    }
   }
 }
 ```
