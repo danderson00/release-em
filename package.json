@@ -8,6 +8,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "minimatch": "^3.0.4",
     "release-it": "^11.0.0",
     "semver": "^6.0.0",
     "yargs-parser": "^13.0.0"

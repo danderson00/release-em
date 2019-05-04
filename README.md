@@ -26,8 +26,8 @@ yarn add --global release-em
 release-em <releaseDirectory> [releaseDirectory] [...] [options]
 ```
 
-Multiple directories can be specified. '*' can be used as a wildcard in 
-directory names. Directories must be immediate children of the workspace root.
+Multiple directories can be specified. Any valid [glob expression](https://www.npmjs.com/package/glob#glob-primer)
+can be used. Directories must be immediate children of the workspace root.
 
 Use of the `--validate` option is highly recommended! It will prevent partially
 completed releases due to minor errors like unstaged changes in a package.
@@ -35,7 +35,7 @@ completed releases due to minor errors like unstaged changes in a package.
 Use the `--verbose` option to see what local dependencies are affected in each
 package.
 
-Options are as follows.
+Options are as follows:
 
 | | | |
 -|-|-
@@ -50,6 +50,7 @@ Options are as follows.
 | |--validate     |Perform a quiet dry run first for validation
 -v|--version      |Print version number
 -V|--verbose      |Verbose output
+
 
 **Release 'em!** will terminate on the first error encountered.
 
@@ -74,12 +75,18 @@ Any dependant packages in the workspace will have the dependency
 sections of their `package.json` updated accordingly.
 
 ```bash
-release-em tools.* libraries.* -i major -t packages --validate
+release-em tools.* libraries.* -i premajor -p alpha -t packages
 ```
 
-Release a new major version of packages in directories starting with `tools.` 
-or `libraries.` in the `packages` directory, performing a validation run before
-any changes are made.
+Release a new alpha version of packages in directories starting with `tools.` 
+or `libraries.` in the `packages` directory.
+
+```bash
+release-em !+(app) -i minor --validate
+```
+
+Release a new minor version of everything except the app package, performing a 
+validation run before any changes are made.
 
 ## Configuration
 

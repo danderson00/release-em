@@ -32,3 +32,10 @@ test("matching versions for multiple paths", () => {
     'library': '1.0.0'
   })
 })
+
+test("glob negation", () => {
+  const matches = releaseVersions(findPackages(join(__dirname, 'packages'), ['!+(library|app)']))  
+  expect(matches).toEqual({
+    'app.core': '0.0.1'
+  })
+})

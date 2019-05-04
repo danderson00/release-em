@@ -42,9 +42,8 @@ function help() {
 
   Usage: release-em <pathToRelease> [pathToRelease] [...] [options]
 
-  Multiple directories can be specified. '*' can be used as a wildcard in 
-  directory names. Directories should be immediate children of the workspace
-  root.
+  Multiple directories can be specified. Any valid glob expression can be used. 
+  Directories should be immediate children of the workspace root.
   
   -c --config          Specify the configuration file path
   -d --dry-run         Do not touch or write anything, but show the commands

@@ -1,8 +1,9 @@
+const match = require('minimatch')
 const { readdirSync, readFileSync } = require('fs')
 const { join } = require('path')
 
-const isReleasePackage = (directoryName, releasePaths) => releasePaths.some(x => 
-  !!(new RegExp(`^${x.replace(/\*/g, '.*')}$`)).exec(directoryName)
+const isReleasePackage = (directoryName, releasePaths) => (
+  releasePaths.some(releasePath => match(directoryName, releasePath))
 )
 
 const loadPackageJson = packagePath => JSON.parse(readFileSync(join(packagePath, 'package.json')))
