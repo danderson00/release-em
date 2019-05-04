@@ -198,3 +198,8 @@ const results = await release({
 })
 console.log(JSON.stringify(results, null, 2))
 ```
+
+## Credits
+
+All the folks involved with [**Release It!**](https://github.com/release-it/release-it).
+Thanks for your hard work and dedication to the community!
