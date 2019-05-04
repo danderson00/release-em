@@ -145,6 +145,18 @@ published. To create a commit for these packages as well, using a JSON file:
 }
 ```
 
+By default, **Release 'em!** will create a git commit in each package 
+directory. For mono-repo configurations, this would create multiple commits
+in the same repo. To stop this from happening:
+
+```JSON
+{
+  "releaseConfig": {
+    "git": false
+  }
+}
+```
+
 To customise the commit message for released packages using a Javascript file:
 
 ```Javascript
