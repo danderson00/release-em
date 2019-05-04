@@ -5,8 +5,8 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}",
-      "args": ["xsocket*", "-t", "..\\xest\\", "-d"],
+      "program": "${workspaceFolder}/bin/release-em.js",
+      "args": ["!burgermenu", "-t", "..\\xest\\", "-d"],
       "cwd":"${workspaceFolder}",
     },
     {

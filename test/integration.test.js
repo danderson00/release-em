@@ -83,7 +83,7 @@ test("integration test", async () => {
       "version": "2.0.0-alpha.0"
     }        
   })
-})
+}, 20000)
 
 const createPackages = packages => {
   rimraf.sync(`${__dirname}/integration`)

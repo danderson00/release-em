@@ -16,7 +16,8 @@ const commonConfig = (options, updatedDependencies) => ({
   'dry-run': options['dryRun'],
   verbose: options.verbose,
   plugins: {
-    [`${__dirname}/UpdateVersionsPlugin`]: { updatedDependencies }
+    [`${__dirname}/UpdateVersionsPlugin`]: { updatedDependencies },
+    [`${__dirname}/CheckUpstreamPlugin`]: { }
   },
   ...options.commonConfig
 })
