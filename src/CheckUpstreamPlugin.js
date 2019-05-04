@@ -13,6 +13,10 @@ module.exports = class CheckUpstreamPlugin extends Plugin {
         { options }
       ))
 
+      if(upstreamCommits === NaN) {
+        throw new Error('Unable to determine if upstream remote has unfetched commits. Aborting.')
+      }
+
       if(upstreamCommits > 0) {
         throw new Error(`The current branch is ${upstreamCommits} commit(s) behind its remote counterpart. Aborting.`)
       }
