@@ -143,7 +143,7 @@ configuration will override these individual settings.
 
 Please see the **Release It!** [documentation](https://github.com/release-it/release-it#configuration) and 
 [default options](https://github.com/release-it/release-it/blob/master/conf/release-it.json)
-for details on configuring **Release It!**.
+for details on configuring **Release It!**
 
 ### Examples
 
@@ -175,10 +175,12 @@ To customise the commit message for released packages using a Javascript
 configuration file:
 
 ```Javascript
+const os = require('os')
+
 module.exports = {
   releaseConfig: {
     git: {
-      commitMessage: `Release \${version} at ${new Date()}`
+      commitMessage: `Release \${version} at ${new Date().toUTCString()} from ${os.hostname()}`
     }
   }
 }
