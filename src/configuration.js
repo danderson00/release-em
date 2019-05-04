@@ -1,7 +1,8 @@
 const { resolve } = require('path')
 
 const defaultConfig = {
-  targetPath: '.'
+  targetPath: '.',
+  increment: 'patch'
 }
 
 const tryLoadConfig = path => {
