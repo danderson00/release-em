@@ -59,6 +59,10 @@ By default, **Release 'em!** will create a git commit in each package
 directory. For mono-repo configurations, this would create multiple commits
 in the same repo. Use the `--no-commit` option to prevent this from happening.
 
+Note that no checks for uncommitted / unstaged changes in the repository are 
+made when this option is enabled, and changes are not committed, tagged or
+pushed.
+
 ### Examples
 
 ```bash
