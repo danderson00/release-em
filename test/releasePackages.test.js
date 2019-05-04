@@ -14,3 +14,14 @@ test("release is called for each package found", async () => {
     [{ release: false }]
   ])
 })
+
+test("results of each release are returned", async () => {
+  const release = jest.fn(config => config.release)
+  const results = await releasePackages(release, { 
+    targetPath: __dirname + '/packages',
+    releasePaths: ['app*'], 
+    releaseConfig: { release: true }, 
+    nonReleaseConfig: { release: false } 
+  })
+  expect(results).toEqual([true, true, false])
+})

@@ -6,8 +6,8 @@ module.exports = (release, options) => {
   const releasePackage = async taskConfig => {
     const originalDirectory = process.cwd()
     process.chdir(taskConfig.path)
-    await release(taskConfig.config)
-    process.chdir(originalDirectory)
+    return Promise.resolve(release(taskConfig.config))
+      .finally(() => process.chdir(originalDirectory))
   }
   
   const packages = findPackages(options.targetPath, options.releasePaths)
@@ -15,7 +15,9 @@ module.exports = (release, options) => {
   const configFactory = taskConfigFactory(options, updatedDependencies)
 
   return packages.map(configFactory).reduce(
-    (promise, taskConfig) => promise.then(() => releasePackage(taskConfig)),
-    Promise.resolve()
+    (promise, taskConfig) => promise.then(
+      async results => [...results, await releasePackage(taskConfig)]
+    ),
+    Promise.resolve([])
   )
 }

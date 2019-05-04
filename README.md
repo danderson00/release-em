@@ -1,9 +1,9 @@
 # Release 'em!
 
-CLI release tool for multiple packages, built on [`release-it`](https://github.com/release-it/release-it).
+CLI release tool for multiple packages, built on [**Release It!**](https://github.com/release-it/release-it).
 
 **Release 'em!** automates the tedious tasks of software releases. It does all 
-of the great things that [`release-it`](https://github.com/release-it/release-it) 
+of the great things that [**Release It!**](https://github.com/release-it/release-it) 
 does, like bump versions, tag source repos, changelogs, etc., and also 
 coordinates this across multiple packages. 
 
@@ -39,6 +39,8 @@ Multiple paths can be specified. '*' can be used as a wildcard in paths. Options
 -v|--version|Print version number
 -V|--verbose|Verbose output
 
+**Release 'em!** will terminate on the first error encountered.
+
 ### Examples
 
 ```bash
@@ -58,9 +60,108 @@ or `libraries.`.
 
 ## Configuration
 
-**Release 'em!** uses the default [`release-it`](https://github.com/release-it/release-it)
+**Release 'em!** uses the default [**Release It!**](https://github.com/release-it/release-it)
 configuration for packages being released (bump version, publish, tag, changelog), 
 as well as updating local dependency versions for packages in the workspace not 
 being released.
 
-Additional configuration can be passed to 
+Additional configuration can be specified by either adding a `release-em` 
+section to the workspace root `package.json` file: 
+
+```JSON
+{
+  "private": true,
+  "workspaces": [
+    "app*"
+  ],
+  "release-em": {
+    "preReleaseId": "alpha"
+  }
+}
+```
+
+by creating a file named `release-em.json`:
+
+```JSON
+{
+  "preReleaseId": "alpha"
+}
+```
+
+or `release-em.js`:
+
+```Javascript
+module.exports = {
+  preReleaseId: "alpha"
+}
+```
+
+The complete list of configuration options appears below:
+
+Name|Default|Description
+-|-|-
+commonConfig||**Release It!** specific configuration for all packages
+configPath|'release-em'|Specify the configuration file path
+dry-run|false|Do not touch or write anything, but show the commands
+increment|'patch'|Increment "major", "minor", "patch", or "pre*" version; or specify version
+interactive|false|Prompt each change
+nonReleaseConfig||**Release It!** specific options for packages not being released
+preReleaseId||Prerelease tag name, e.g. "alpha"
+releaseConfig||**Release It!** specific options for packages being released
+releasePaths||An array of directory names of packages to release. Use `*` as a wildcard.
+targetPath|'.'|Specify the path of the workspace to release
+verbose|false|Verbose output
+
+The **Release It!** configuration for individual packages can be set by 
+creating a `.release-it.json` or a `release-it` section in the
+`package.json` file for each package. 
+
+Please see the **Release It!** [documentation](https://github.com/release-it/release-it#configuration) and 
+[default options](https://github.com/release-it/release-it/blob/master/conf/release-it.json)
+for details on configuring **Release It!**.
+
+### Examples
+
+By default, **Release 'em** won't create git commits for packages not being
+published. To create a commit for these packages as well, using a JSON file:
+
+```JSON
+{
+  "nonReleaseConfig": {
+    "git": {
+      "commit": true,
+      "commitMessage": "Update dependencies",
+      "tag": false,
+      "push": true    
+    }
+  }
+}
+```
+
+To customise the commit message for released packages using a Javascript file:
+
+```Javascript
+module.exports = {
+  releaseConfig: {
+    git: {
+      commitMessage: `Release \${version} at ${new Date()}`
+    }
+  }
+}
+```
+
+## Using **Release 'em!** Programmatically
+
+**Release 'em!** has a very simple API, exposing a single function expecting
+an object with configuration data, as described above. The function returns a
+promise that will fullfil with an array of the results for each call to
+**Release It!** or rejects with the reason for failure.
+
+```Javascript
+const release = require('release-em')
+const results = release({
+  preReleaseId: 'beta',
+  increment: 'premajor'
+})
+console.log(JSON.stringify(results, null, 2))
+```
