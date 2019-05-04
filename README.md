@@ -112,8 +112,9 @@ targetPath|'.'|Specify the path of the workspace to release
 verbose|false|Verbose output
 
 The **Release It!** configuration for individual packages can be set by 
-creating a `.release-it.json` or a `release-it` section in the
-`package.json` file for each package. 
+creating a `.release-it.json` or a `release-it` section in the `package.json` 
+file for each package. Be aware that the options specified in **Release 'em!**
+configuration will override these individual settings.
 
 Please see the **Release It!** [documentation](https://github.com/release-it/release-it#configuration) and 
 [default options](https://github.com/release-it/release-it/blob/master/conf/release-it.json)
@@ -121,7 +122,7 @@ for details on configuring **Release It!**.
 
 ### Examples
 
-By default, **Release 'em** won't create git commits for packages not being
+By default, **Release 'em!** won't create git commits for packages not being
 published. To create a commit for these packages as well, using a JSON file:
 
 ```JSON
