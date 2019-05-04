@@ -7,7 +7,8 @@ const release = require('..')
 const aliases = {
   c: 'configPath',
   config: 'configPath',
-  d: 'dry-run',
+  d: 'dryRun',
+  'dry-run': 'dryRun',
   h: 'help',
   i: 'increment',
   I: 'interactive',
@@ -19,7 +20,7 @@ const aliases = {
 
 const args = [].slice.call(process.argv, 2)
 const options = parseArgs(args, {
-  boolean: ['dry-run', 'help', 'interactive', 'verbose', 'version'],
+  boolean: ['dryRun', 'help', 'interactive', 'verbose', 'version'],
   alias: aliases
 })
 

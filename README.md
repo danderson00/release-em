@@ -101,7 +101,7 @@ Name|Default|Description
 -|-|-
 commonConfig||**Release It!** specific configuration for all packages
 configPath|'release-em'|Specify the configuration file path
-dry-run|false|Do not touch or write anything, but show the commands
+dryRun|false|Do not touch or write anything, but show the commands
 increment|'patch'|Increment "major", "minor", "patch", or "pre*" version; or specify version
 interactive|false|Prompt each change
 nonReleaseConfig||**Release It!** specific options for packages not being released
