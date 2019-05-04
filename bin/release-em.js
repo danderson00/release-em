@@ -52,7 +52,7 @@ function help() {
   -I --interactive   Prompt each change
   -n --no-commit     Don't create a git commit or tag for released packages
   -t --target-path   Specify the path of the workspace to release
-     --validate      Perform a dry run first for validation
+     --validate      Perform a quiet dry run first for validation
   -v --version       Print version number
   -V --verbose       Verbose output`)
 }

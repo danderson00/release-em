@@ -27,8 +27,10 @@ release-em <releaseDirectory> [releaseDirectory] [...] [options]
 ```
 
 Multiple directories can be specified. '*' can be used as a wildcard in 
-directory names. Directories should be immediate children of the workspace
-root.
+directory names. Directories must be immediate children of the workspace root.
+
+Use of the `--validate` option is highly recommended! It will prevent partially
+completed releases due to minor errors such as unstaged changes in a package.
 
 Use the `--verbose` option to see what local dependencies are affected in each
 package.
@@ -44,6 +46,7 @@ Options are as follows.
 -I|--interactive|Prompt each change
 -n|--no-commit|Don't create a git commit or tag for released packages
 -t|--target-path|Specify the path of the workspace to release
+  |--validate|Perform a quiet dry run first for validation
 -v|--version|Print version number
 -V|--verbose|Verbose output
 
@@ -124,6 +127,7 @@ preReleaseId||Prerelease tag name, e.g. "alpha"
 releaseConfig||**Release It!** specific options for packages being released
 releasePaths||An array of directory names of packages to release. Use `*` as a wildcard.
 targetPath|'.'|Specify the path of the workspace to release
+validate|false|Perform a quiet dry run first for validation
 verbose|false|Verbose output
 
 The **Release It!** configuration for individual packages can be set by 
