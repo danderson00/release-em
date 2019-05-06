@@ -68,3 +68,8 @@ test("noCommit", () => {
   expect(factory({ noCommit: true }, updatedDependencies)({ release: true }))
     .toMatchObject({ config: { git: false } })
 })
+
+test("githubRelease", () => {
+  expect(factory({ githubRelease: true }, updatedDependencies)({ release: true }))
+    .toMatchObject({ config: { git: { release: true } } })
+})

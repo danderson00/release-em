@@ -36,6 +36,8 @@ like unstaged changes in a package.
 Use the `--verbose` option to see what local dependencies are affected in each
 package.
 
+**Release 'em!** will terminate on the first error encountered.
+
 Options are as follows:
 
 | | | |
@@ -47,13 +49,11 @@ Options are as follows:
 -I|--interactive  |Prompt each change
 -n|--no-commit    |Don't create a git commit or tag for released packages
 -p|--prerelease-id|Tag to use for prerelease versions
+-r|--release      |Create a github release for packages being released
 -t|--target-path  |Specify the path of the workspace to release
 | |--validate     |Perform a quiet dry run first for validation
 -v|--version      |Print version number
 -V|--verbose      |Verbose output
-
-
-**Release 'em!** will terminate on the first error encountered.
 
 ### Using With Mono-Repo Configurations
 
@@ -64,6 +64,13 @@ in the same repo. Use the `--no-commit` option to prevent this from happening.
 Note that no checks for uncommitted / unstaged changes in the repository are 
 made when this option is enabled, and changes are not committed, tagged or
 pushed.
+
+### Enabling Automatic Github Releases
+
+Automatic creation of [github releases](https://help.github.com/articles/creating-releases/) 
+using the `--github-release` option requires the configuration of a github 
+personal access token. Follow the **Release It!** [instructions](https://github.com/release-it/release-it#github-releases) 
+for obtaining and configuring a token, skipping "Configure `github.release: true`".
 
 ### Examples
 
@@ -133,6 +140,7 @@ Name|Default|Description
 commonConfig||**Release It!** specific configuration for all packages
 configPath|'release-em'|Specify the configuration file path
 dryRun|false|Do not touch or write anything, but show the commands
+githubRelease|false|Create a github release for packages being released
 increment|'patch'|Increment "major", "minor", "patch", or "pre*" version; or specify version
 interactive|false|Prompt each change
 noCommit|false|Don't create a git commit or tag for released packages
@@ -197,9 +205,9 @@ module.exports = {
 ## Using **Release 'em!** Programmatically
 
 **Release 'em!** has a very simple API, exposing a single function expecting
-an object with configuration data, as described above. The function returns a
-promise that will resolve with an array of the results for each call to
-**Release It!** or reject with the reason for failure.
+an object with configuration data, as described [above](#configuration). The 
+function returns a promise that will resolve with an array of the results for 
+each call to **Release It!** or reject with the reason for failure.
 
 ```Javascript
 const release = require('release-em')

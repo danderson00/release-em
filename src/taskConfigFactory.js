@@ -1,7 +1,12 @@
 const releaseConfig = options => ({
   increment: options.increment,
   preReleaseId: options.preReleaseId,
-  ...(options.noCommit && { git: false }),
+  ...(options.noCommit 
+    ? { git: false }
+    : options.githubRelease
+      ? { git: { release: true } }
+      : { }
+  ),
   ...options.releaseConfig
 })
 
@@ -13,7 +18,7 @@ const nonReleaseConfig = options => ({
 
 const commonConfig = (options, updatedDependencies) => ({
   'non-interactive': !options.interactive,
-  'dry-run': options['dryRun'],
+  'dry-run': options.dryRun,
   verbose: options.verbose,
   plugins: {
     [`${__dirname}/UpdateVersionsPlugin`]: { updatedDependencies },

@@ -16,6 +16,8 @@ const aliases = {
   'no-commit': 'noCommit',
   p: 'preReleaseId',
   'prerelease-id': 'preReleaseId',
+  r: 'githubRelease',
+  'github-release': 'githubRelease',
   t: 'targetPath',
   'target-path': 'targetPath',
   v: 'version',
@@ -53,6 +55,7 @@ function help() {
   -I --interactive     Prompt each change
   -n --no-commit       Don't create a git commit or tag for released packages
   -p --prerelease-id   Tag to use for prerelease versions
+  -r --github-release  Create a github release for packages being released
   -t --target-path     Specify the path of the workspace to release
      --validate        Perform a quiet dry run first for validation
   -v --version         Print version number
