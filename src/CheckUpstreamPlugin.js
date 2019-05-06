@@ -5,22 +5,13 @@ const readOnlyOperation = { options: { write: false } }
 module.exports = class CheckUpstreamPlugin extends Plugin {
   async beforeBump() {
     if(!!this.config.options.git) {
-      await this.exec('git remote update', readOnlyOperation)
+      await this.exec('git fetch', readOnlyOperation)
 
-      const branch = await this.exec('git rev-parse --abbrev-ref HEAD', readOnlyOperation)
-      const remoteBranch = await this.exec('git rev-parse --abbrev-ref --symbolic-full-name @{u}', readOnlyOperation)
+      const status = await this.exec(`git status -sb`, readOnlyOperation)
+      const commitDifference = status.match(/\[(.*)]/)
 
-      const upstreamCommits = Number(await this.exec(
-        `git rev-list ${branch}..${remoteBranch} --count`, 
-        readOnlyOperation
-      ))
-
-      if(upstreamCommits === NaN) {
-        throw new Error('Unable to determine if upstream remote has unfetched commits. Aborting.')
-      }
-
-      if(upstreamCommits > 0) {
-        throw new Error(`The current branch is ${upstreamCommits} commit(s) behind its remote counterpart. Aborting.`)
+      if(commitDifference) {
+        throw new Error(`The current branch is ${commitDifference} commit(s) compared with its remote counterpart. Aborting.`)
       }
     }
   }
