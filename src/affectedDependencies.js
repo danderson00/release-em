@@ -1,5 +1,3 @@
-// this module is purely for verbose logging output
-
 const versionPrefix = version => (version.match(/([~^])/) || [''])[0]
 
 module.exports = (packageJson, updatedDependencies) => {
