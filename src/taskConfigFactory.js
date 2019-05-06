@@ -17,7 +17,8 @@ const commonConfig = (options, updatedDependencies) => ({
   verbose: options.verbose,
   plugins: {
     [`${__dirname}/UpdateVersionsPlugin`]: { updatedDependencies },
-    [`${__dirname}/CheckUpstreamPlugin`]: { }
+    [`${__dirname}/CheckCommitsPlugin`]: { },
+    [`${__dirname}/CheckScopedPackagePlugin`]: { }
   },
   ...options.commonConfig
 })

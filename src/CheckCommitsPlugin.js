@@ -2,7 +2,7 @@ const { Plugin } = require('release-it')
 
 const readOnlyOperation = { options: { write: false } }
 
-module.exports = class CheckUpstreamPlugin extends Plugin {
+module.exports = class CheckCommitsPlugin extends Plugin {
   async beforeBump() {
     if(!!this.config.options.git) {
       await this.exec('git fetch', readOnlyOperation)

@@ -4,7 +4,8 @@ const { resolve } = require('path')
 const updatedDependencies = { a: '0.0.1' }
 const plugins = { 
   [`${resolve(__dirname, '../src')}/UpdateVersionsPlugin`]: { updatedDependencies } ,
-  [`${resolve(__dirname, '../src')}/CheckUpstreamPlugin`]: { } 
+  [`${resolve(__dirname, '../src')}/CheckCommitsPlugin`]: { }, 
+  [`${resolve(__dirname, '../src')}/CheckScopedPackagePlugin`]: { }
 }
 
 test("default release config", () => {
