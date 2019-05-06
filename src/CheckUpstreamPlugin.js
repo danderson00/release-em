@@ -11,7 +11,7 @@ module.exports = class CheckUpstreamPlugin extends Plugin {
       const commitDifference = status.match(/\[(.*)]/)
 
       if(commitDifference) {
-        throw new Error(`The current branch is ${commitDifference} commit(s) compared with its remote counterpart. Aborting.`)
+        throw new Error(`The current branch is ${commitDifference[1]} commit(s) compared with its remote counterpart. Aborting.`)
       }
     }
   }
