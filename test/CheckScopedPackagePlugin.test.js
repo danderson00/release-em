@@ -1,4 +1,4 @@
-const Check = require('../src/CheckScopedPackagePlugin')
+const Check = require('../src/plugins/CheckScopedPackagePlugin')
 
 test("if package is scoped and not private, publishConfig must be set", () => {
   expect(() => new Check().check({

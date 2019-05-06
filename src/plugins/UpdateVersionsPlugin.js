@@ -1,5 +1,5 @@
-const updatePackageVersions = require('./updatePackageVersions')
-const calculateAffectedDependencies = require('./affectedDependencies')
+const updatePackageVersions = require('../updatePackageVersions')
+const calculateAffectedDependencies = require('../affectedDependencies')
 const { Plugin } = require('release-it')
 const fs = require('fs')
 

@@ -1,7 +1,7 @@
 const incrementVersions = require('./incrementVersions')
 const { findPackages, releaseVersions } = require('./packages')
 const taskConfigFactory = require('./taskConfigFactory')
-const quietReleaseItDi = require('./quietReleaseItDi')
+const quietReleaseItDi = require('./plugins/quietReleaseItDi')
 
 module.exports = (release, options) => {
   const releasePackage = async (taskConfig, getLogMessage, quiet) => {
